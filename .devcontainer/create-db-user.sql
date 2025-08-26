@@ -1,2 +1,2 @@
 CREATE USER ${USER:-you} CREATEDB;
-CREATE DATABASE ror_template WITH OWNER ${USER:-you};
+CREATE DATABASE testinvoices WITH OWNER ${USER:-you};
