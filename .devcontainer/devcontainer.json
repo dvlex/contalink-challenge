@@ -24,7 +24,9 @@
 				"GitHub.vscode-pull-request-github",
 				"GitHub.copilot",
 				"GitHub.copilot-chat",
-				"aliariff.vscode-erb-beautify"
+				"aliariff.vscode-erb-beautify",
+				"Postman.postman-for-vscode",
+				"cweijan.vscode-postgresql-client2"
 			]
 		}
 	}

@@ -10,6 +10,7 @@ RUN apt-get update \
     ca-certificates \
     curl \
     sudo \
+    redis-tools \
     build-essential \
     git \
     libpq5 \
