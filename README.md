@@ -88,6 +88,10 @@ It's recommendable to use the Postman extension in Vscode, which allows you to a
 `Rails.cache.read("test_key")`: you get the value associated with that key
 `Rails.cache.write("key":"value")`: you create the key value in redis
 
+## ToDo's
+- Configure CI/CD pipeline: Since the Dockerfile for deployment, is in the root, there're not yet some GH actions, to the management of CI/CD, please let me know if you need that, and I'll do it.
+- it's recommeded to have timestamps in each table, calling about Invoice
+
 ## 🧾 Final Thoughts
 I'm Alex Castillo, and I want to extend my sincere thanks to Contalink for the opportunity to explore this Rails position through this technical challenge. For the purposes of this repo, I opted to use Redis as the cache store to simplify observability and isolate behavior during testing. However, it's worth noting that the Rails core team recommends using in-disk caching, especially with the rise of fast and affordable NVMe storage, which offers excellent performance for most production workloads. This project was a great chance to revisit conventions, experiment with infrastructure choices, and reflect on best practices.
 
