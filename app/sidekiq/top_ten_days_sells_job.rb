@@ -8,6 +8,6 @@ class TopTenDaysSellsJob
       .order(Arel.sql("daily_total DESC"))
       .limit(10)
 
-    InvoiceMailer.test("alex@lexdrel.com", top_ten_days).deliver_now
+    InvoiceMailer.test(ENV["TOP_TEN_DAYS_SELLS_JOB_MAILTO"], top_ten_days).deliver_now
   end
 end
