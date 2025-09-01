@@ -1,4 +1,15 @@
-:concurrency: 3
-:queues:
+concurrency: 3
+
+schedule:
+  top_ten_days_sells_job:
+    cron: "0 8 * * *"
+    tz: "America/Mexico_City"
+    class: "TopTenDaysSellsJob"
+    queue: default
+    description: "Reporte diario Top 10 días con más ventas"
+    args: []
+    catch_up: true
+
+queues:
   - [mailer_batch, 5]
   - [default,     1]

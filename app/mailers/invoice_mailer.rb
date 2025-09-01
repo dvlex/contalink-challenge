@@ -1,7 +1,8 @@
 class InvoiceMailer < ApplicationMailer
-  def test(email)
+  def test(email, top_ten_days)
+    @top_ten_days = top_ten_days
     mail(to: email, subject: "Test Email from Contalink Challenge") do |format|
-      format.text { render plain: "This is a test email to verify SMTP settings." }
+      format.html
     end
   end
 end
