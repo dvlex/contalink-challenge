@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Top Ten Days Report</h1>
+
+    <table style="border-collapse: collapse; width: 100%;">
+      <thead>
+        <tr>
+          <th style="border: 1px solid #ccc; padding: 8px; text-align: left;">Fecha</th>
+          <th style="border: 1px solid #ccc; padding: 8px; text-align: right;">Total Diario</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @top_ten_days.each do |day_hash| %>
+          <% date = day_hash[:day].to_date %>
+          <% total = day_hash[:daily_total].to_f %>
+
+          <tr>
+            <td style="border: 1px solid #eee; padding: 8px;">
+              <%= date.strftime("%d/%m/%Y") %>
+            </td>
+            <td style="border: 1px solid #eee; padding: 8px; text-align: right;">
+              <%= number_to_currency(
+                    total,
+                    unit: "$",       # o "€", "MXN ", etc.
+                    delimiter: ",",  # separador de miles
+                    separator: ".",
+                    precision: 2
+                  ) %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </body>
+</html>

@@ -67,11 +67,17 @@ Then run `bundle install`, to set all the gems, including the one that reads the
 #### The db setup
 Since it's recommendable work with a dev local db, in this project is setted as a docker-compose service, which is initialized automatically by the devcontainer; working with remote DB, even if those are dev/stagging, you expose the IP/port to everyone, and you could have an expensive invoice of your cloud provider, or DoS attack to your bare-metal server. To work locally, follow the next steps(all of them inside the devcontainer):
 - In a vscode terminal: `rails db:prepare`, this will create the dev db, make the migrations, and will seed 100,000 mock records emulating the prod/stagging env.
-- Now you have the local environment setted, congratulations, you can run the project with `rails s`
+- Now you have the local environment setted, congratulations, you can run the project with `bin/dev`
 
 *Info:* However, if you are ok with the risks of accesing a remote DB engine, you can set in .env the corresponding credentials, but, if you choose this, DON'T use `rails db:prepare`, since this can overwrite data in the remote DB, and you could make a lot of high-caffeine mad developers blame you.
 
-### 5. Curl/Postman
+#### Project start
+Since we implemented Sidekiq, we can't use just `rails s` but `bin/dev`, becase `bin/dev` initializes both rails sever and Sidekiq server
+
+### 5. Sidekiq
+Sidekiq is a powerful background job processor for Ruby applications, designed to handle asynchronous tasks efficiently using Redis. It allows you to offload time-consuming operations—like sending emails, processing data, or generating reports—so your app stays fast and responsive. In this project, the TopTenDaysSellsJob is scheduled to run daily and can be managed directly from the Sidekiq web interface. To view or manually trigger this job, navigate to `/sidekiq/recurring-jobs`, where it appears in the list of scheduled tasks. From there, you can click "Enqueue Now" to execute it immediately, making it easy to test or force a run outside its regular schedule.
+
+### 6. Curl/Postman
 It's recommendable to use the Postman extension in Vscode, which allows you to avoid exposing the devcontainer to the LAN/WLAN, but also, you can use Postman App or curl with the next snippet:
 `curl --location 'http://localhost:3000/invoices?start_date=%222022-05-13%22&end_date=%222023-05-13%22'`(you can import this to postman)
 
