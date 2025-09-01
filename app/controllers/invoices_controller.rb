@@ -1,9 +1,10 @@
 class InvoicesController < ApplicationController
   # GET /invoices or /invoices.json
+  skip_before_action :verify_authenticity_token, only: [ :index ]
   before_action :set_dates, only: [ :index ]
   def index
     return Result.new(nil, "Invalid date format", :bad_request) unless valid_dates?
-    return Result.new(nil, "end_date must be after start_date", :unprocessable_entity) unless @end_date > @start_date
+    return Result.new(nil, "end_date must be after start_date", :unprocessable_entity) unless @end_date >= @start_date
     return Result.new(nil, "end_date cannot be in the future", :unprocessable_entity) if @end_date > Time.current
 
     cache_key = "invoices:index:#{@start_date.to_i}_#{@end_date.to_i}"
