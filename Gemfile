@@ -75,3 +75,5 @@ gem "sidekiq", "~> 8.0"
 gem "foreman", "~> 0.90.0"
 
 gem "sidekiq-scheduler", "~> 6.0"
+
+gem "rack-cors", "~> 3.0"

@@ -89,6 +89,9 @@ It's recommendable to use the Postman extension in Vscode, which allows you to a
 `get "dev-cache:key"`: you get the value associated with that key
 `exit`: you disconnect from the redis server
 
+### Redis cache common error
+Since we're on dev mode, some times redis could not delete/modify the cache, because we're storing it in a volume, just delete the docker volume, and purge the redis cache, and you will be ok. Or just restart the devcontainer.
+
 ### rails console commands
 `Rails.cache.delete_matched("invoices*")`: you delete all the redis cache content which the keys start with invoices, but only the related to the workspace.
 `Rails.cache.read("test_key")`: you get the value associated with that key
